@@ -34,7 +34,7 @@
           </div>
           <div class="time-wrapper">
             <font-awesome-icon icon="clock" class="clock"/>
-            {{filteredJob.created_at}}
+            {{ moment(filteredJob.created_at).fromNow() }}
           </div>
           <div class="row">
             <div class="col-xs-7">
@@ -73,6 +73,9 @@
 import axios from 'axios';
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import moment from 'moment';
+
+moment().format();
 
 type Job = {
     id: string;
@@ -92,6 +95,7 @@ type Data = {
   jobs: Job[];
   loading: boolean;
   errored: boolean;
+  moment: any;
 }
 
 export default defineComponent({
@@ -100,6 +104,7 @@ export default defineComponent({
       jobs: [],
       loading: true,
       errored: false,
+      moment,
     };
   },
   components: {

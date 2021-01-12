@@ -24,7 +24,7 @@
     </span>
     <span>
       <font-awesome-icon icon="clock" class="clock" />
-        {{date}}
+         {{ moment(date).fromNow() }}
     </span>
     </div>
   </div>
@@ -32,7 +32,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+moment().format();
 
 const JobCard = defineComponent({
   components: {
@@ -48,6 +51,7 @@ const JobCard = defineComponent({
   },
   data() {
     return {
+      moment,
     };
   },
 });
